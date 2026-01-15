@@ -5,6 +5,7 @@ import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
 import FakeWeather from "./data/FakeWeather.json";
 import { useEffect, useState } from "react";
+import { getWeatherIcon } from "@/utils/getWeatherIcon";
 
 export default function Home() {
   // Extract current weather data and forecast data from FakeWeather
@@ -72,8 +73,8 @@ export default function Home() {
       minute: "2-digit",
     }),
     temp: Math.round(item.main.temp),
-    icon: `/${item.weather[0].main.toLowerCase()}.svg`,
     condition: item.weather[0].main,
+    icon: getWeatherIcon(item.weather[0].id),
   }));
 
   return (
@@ -84,7 +85,7 @@ export default function Home() {
         temp={Math.round(currentWeatherData.main.temp)}
         condition={currentWeatherData.weather[0].main}
         city={weatherData.city.name}
-        icon={`https://openweathermap.org/img/wn/${currentWeatherData.weather[0].icon}@2x.png`}
+        icon={getWeatherIcon(currentWeatherData.weather[0].id)}
         humidity={currentWeatherData.main.humidity}
         wind={currentWeatherData.wind.speed}
         pressure={currentWeatherData.main.pressure}
