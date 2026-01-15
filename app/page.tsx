@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
     <main>
@@ -14,10 +16,7 @@ export default function Home() {
         <p>date</p>
         <div className="weatherMain">
           <div className="weatherIcon">
-            <img
-              src="https://placehold.co/100x100"
-              alt="weather icon placeholder"
-            />
+            <Image src="/storm.svg" alt="storm icon" width={100} height={100} />
           </div>
           <div>
             <p>Temperature</p>
