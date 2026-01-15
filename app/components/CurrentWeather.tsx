@@ -27,7 +27,7 @@ const CurrentWeather = ({
       <p>{date}</p>
       <div className="weatherMain">
         <div className="weatherIcon">
-          <Image src={icon} alt="storm icon" width={100} height={100} />
+          <Image src={icon} alt={condition} width={100} height={100} />
         </div>
         <div>
           <p>{temp}°C</p>
