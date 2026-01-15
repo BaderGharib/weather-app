@@ -1,19 +1,26 @@
 import ForecastItem from "./ForecastItem";
-type Props = {};
 
-const Forecast = (props: Props) => {
-  return (
-    <section className="forecastSection">
-      <h2>Forecast</h2>
-      <div className="forecastContainer">
-        <ForecastItem />
-        <ForecastItem />
-        <ForecastItem />
-        <ForecastItem />
-        <ForecastItem />
-      </div>
-    </section>
-  );
+type ForecastData = {
+  time: string;
+  temp: number;
+  icon: string;
 };
 
-export default Forecast;
+type Props = {
+  forecastData: ForecastData[]; // array of forecast items
+};
+
+export default function Forecast({ forecastData }: Props) {
+  return (
+    <div className="forecastContainer">
+      {forecastData.map((item, index) => (
+        <ForecastItem
+          key={index} // React needs a key for lists
+          time={item.time}
+          temp={item.temp}
+          icon={item.icon}
+        />
+      ))}
+    </div>
+  );
+}

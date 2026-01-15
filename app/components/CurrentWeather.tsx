@@ -1,26 +1,44 @@
 import Image from "next/image";
 
-type Props = {};
+type Props = {
+  temp: number;
+  condition: string;
+  city: string;
+  humidity: number;
+  wind: number;
+  pressure: number;
+  icon: string;
+  date: string;
+};
 
-const CurrentWeather = (props: Props) => {
+const CurrentWeather = ({
+  temp,
+  condition,
+  city,
+  humidity,
+  wind,
+  pressure,
+  icon,
+  date,
+}: Props) => {
   return (
     <section className="currentWeatherSection">
-      <h2>City Name</h2>
-      <p>date</p>
+      <h2>{city}</h2>
+      <p>{date}</p>
       <div className="weatherMain">
         <div className="weatherIcon">
-          <Image src="/storm.svg" alt="storm icon" width={100} height={100} />
+          <Image src={icon} alt="storm icon" width={100} height={100} />
         </div>
         <div>
-          <p>Temperature</p>
-          <p>Condition</p>
+          <p>{temp}°C</p>
+          <p>{condition}</p>
         </div>
       </div>
 
       <div className="weatherInfo">
-        <span>Humidity: --%</span>
-        <span>Wind: -- km/h</span>
-        <span>Pressure: -- hPa</span>
+        <span>Humidity: {humidity}%</span>
+        <span>Wind: {wind}km/h</span>
+        <span>Pressure: {pressure}hPa</span>
       </div>
     </section>
   );

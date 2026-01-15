@@ -1,15 +1,15 @@
-import Image from "next/image";
-
-type Props = {};
-
-const ForecastItem = (props: Props) => {
-  return (
-    <div>
-      <Image src="/storm.svg" alt="storm icon" width={100} height={100} />
-      <p>Temperature</p>
-      <p>Condition</p>
-    </div>
-  );
+type Props = {
+  time: string;
+  temp: number;
+  icon: string;
 };
 
-export default ForecastItem;
+export default function ForecastItem({ time, temp, icon }: Props) {
+  return (
+    <div className="forecastItemContainer">
+      <img src={icon} alt="weather icon" width={80} height={80} />
+      <p>{time}</p>
+      <p>{temp}°C</p>
+    </div>
+  );
+}
